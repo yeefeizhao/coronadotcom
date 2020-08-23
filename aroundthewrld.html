@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Corona</title> 
+	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	 crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js">
+
+	</script>
+	<style>
+		#map {
+			position: absolute;
+			top: 55px;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	</style>
+</head>
+
+
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#"><img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">Coronadotcom</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link active" href="aroundthewrld.html">Around the World <span class="sr-only">(current)    </span></a>
+          <a class="nav-link" href="schoolsandreopeningadvice.html">Schools and Reopening</a>
+        </div>
+     </div>
+    </nav>
+  </header>
+
+
+  <body>	
+	<div id="map"></div>
+		<script>
+
+			var southWest = L.latLng(-89.98155760646617, -180), northEast = L.latLng(89.99346179538875, 180);
+			var bounds = L.latLngBounds(southWest, northEast);
+      var map = L.map('map', {
+				maxBounds: bounds,
+			}).setView([0, 0], 1);
+
+
+      L.tileLayer('https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=0O1oIV9PUmogw8BA5VZ6',{
+        tileSize: 512,
+        zoomOffset: -1,
+        minZoom: 3,
+				maxZoom: 6,
+				noWrap: true,
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
+        crossOrigin: true
+      }).addTo(map);			
+
+			var ae = L.circle([23.424076, 53.847818], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ae.bindPopup("United Arab Emirates<br>Cases: 66,617<br>Deaths: 372").on('click');
+
+			var af = L.circle([33.93911, 67.709953], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			af.bindPopup("<b>Afghanistan</b><br>Cases: 37,953<br>Deaths: 1,385").on('click');
+
+			var am = L.circle([40.069099, 45.038189], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			am.bindPopup("<b>Armenia</b><br>Cases: 42,616<br>Deaths: 850").on('click');
+
+			var aq = L.circle([-75.250973, -0.071389], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			aq.bindPopup("<b>Antarctica</b><br>Cases: 0<br>Deaths: 0").on('click');
+
+			var ar = L.circle([-38.416097, -63.616672], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ar.bindPopup("<b>Argentina</b><br>Cases: 329,043<br>Deaths: 6,730").on('click');
+
+			var at = L.circle([47.516231, 14.550072], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			at.bindPopup("<b>Austria</b><br>Cases: 25,062<br>Deaths: 732").on('click');
+
+			var au = L.circle([-25.274398, 133.775136], {
+    		color: '#027e4e',
+    		fillColor: '#027e4e',
+    		fillOpacity: 0.5,
+    		radius: 200000
+			}).addTo(map)
+			au.bindPopup("<b>Australia</b><br>Cases: 24,602<br>Deaths: 485<br>Australia has closed its borders and stopped letting travellers enter the country. This paired with strict social distancing, wearing masks, and targeted testing has kept their numbers low.").on('click');
+
+			var az = L.circle([40.143105, 47.576927], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			az.bindPopup("<b>Azerbaijan</b><br>Cases: 34,921<br>Deaths: 512").on('click');
+
+			var ba = L.circle([43.915886, 17.679076], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ba.bindPopup("<b>Bosnia and Herzegovina</b><br>Cases: 17,715<br>Deaths: 532").on('click');
+
+			var bd = L.circle([23.684994, 90.356331], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			bd.bindPopup("<b>Bangladesh</b><br>Cases: 292,625<br>Deaths: 3,907").on('click');
+
+			var be = L.circle([50.503887, 4.469936], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			be.bindPopup("<b>Belgium</b><br>Cases: 80,894<br>Deaths: 9,985").on('click');
+
+			var bf = L.circle([12.238333, -1.561593], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			bf.bindPopup("<b>Burkina Faso</b><br>Cases: 1.297<br>Deaths: 55").on('click');
+
+			var bg = L.circle([42.733883, 25.48583], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			bg.bindPopup("<b>Bulgaria</b><br>Cases: 15,131<br>Deaths: 539").on('click');
+
+			var bh = L.circle([25.930414, 50.637772], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			bh.bindPopup("<b>Bahrain</b><br>Cases: 8,661<br>Deaths: 183").on('click');
+
+			var bo = L.circle([-16.290154, -63.588653], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			bo.bindPopup("<b>Bolivia</b><br>Cases: 107,435<br>Deaths: 4,336").on('click');
+
+			var br = L.circle([-14.235004, -51.92528], {
+    		color: '#e60026',
+    		fillColor: '#e60026',
+    		fillOpacity: 0.5,
+    		radius: 500000
+			}).addTo(map)
+			br.bindPopup("<b>Brazil</b><br>Cases: 3,536,488<br>Deaths: 113,454").on('click');
+
+			var by = L.circle([53.709807, 27.953389], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			by.bindPopup("<b>Belarus</b><br>Cases: 70,285<br>Deaths: 637").on('click');
+
+			var ca = L.circle([56.130366, -106.346771], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 150000
+			}).addTo(map)
+			ca.bindPopup("<b>Canada</b><br>Cases: 124,372<br>Deaths: 9,064").on('click');
+
+			var ch = L.circle([46.818188, 8.227512], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ch.bindPopup("<b>Switzerland</b><br>Cases: 39,627<br>Deaths: 2,000").on('click');
+
+			var ci = L.circle([7.539989, -5.54708], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ci.bindPopup("<b>Côte d'Ivoire</b><br>Cases: 17,310<br>Deaths: 112").on('click');
+
+			var cl = L.circle([-35.78623, -71.674675], {
+    		color: '#e60026',
+    		fillColor: '#e60026',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			cl.bindPopup("<b>Chile</b><br>Cases: 393,769<br>Deaths: 10,723").on('click');
+
+			var cm = L.circle([5.685477, 12.7228775], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			cm.bindPopup("<b>Cameroon</b><br>Cases: 18,762<br>Deaths: 408").on('click');
+
+			var cn = L.circle([35.86166, 104.195397], {
+    		color: '#027e4e',
+    		fillColor: '#027e4e',
+    		fillOpacity: 0.5,
+    		radius: 300000
+			}).addTo(map)
+			cn.bindPopup("<b>China</b><br>Cases: 84,939<br>Deaths: 4,634<br>To stop the spread, authorities went from door to door for health checks and ensured everyone wore a mask. Everyone that displayed symptoms, no matter how mild, were forcibly seperated from the healthy.").on('click');
+
+			var co = L.circle([4.570868, -74.297333], {
+    		color: '#e60026',
+    		fillColor: '#e60026',
+    		fillOpacity: 0.5,
+    		radius: 300000
+			}).addTo(map)
+			co.bindPopup("<b>Colombia</b><br>Cases: 522,138<br>Deaths: 16,568").on('click');
+
+			var cr = L.circle([9.748917, -83.753428], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			cr.bindPopup("<b>Costa Rica</b><br>Cases: 32,134<br>Deaths: 340").on('click');
+
+			var cz = L.circle([49.817492, 15.472962], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			cz.bindPopup("<b>Czech Republic</b><br>Cases: 21,551<br>Deaths: 411").on('click');
+
+			var de = L.circle([51.165691, 10.451526], {
+    		color: '#027e4e',
+    		fillColor: '#027e4e',
+    		fillOpacity: 0.5,
+    		radius: 175000
+			}).addTo(map)
+			de.bindPopup("<b>Germany</b><br>Cases: 233,136<br>Deaths: 9,329<br>Counties has systems designed to assess how severe the issue is in the area. This allows small businesses to be able to open up when safe while keeping people safe.").on('click');
+
+			var dk = L.circle([56.26392, 9.501785], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			dk.bindPopup("<b>Denmark</b><br>Cases: 16,239<br>Deaths: 622").on('click');
+
+			var dr = L.circle([18.735693, -70.162651], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			dr.bindPopup("<b>Dominican Republic</b><br>Cases: 89,867<br>Deaths: 1,533").on('click');
+
+			var dz = L.circle([28.033886, 1.659626], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			dz.bindPopup("<b>Algeria</b><br>Cases: 40,667<br>Deaths: 1,418").on('click');
+
+			var ec = L.circle([-1.831239, -78.183406], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 150000
+			}).addTo(map)
+			ec.bindPopup("<b>Ecuador</b><br>Cases: 106,481<br>Deaths: 6,248").on('click');
+
+			var eg = L.circle([26.820553, 30.802498], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			eg.bindPopup("<b>Egypt</b><br>Cases: 97,148<br>Deaths: 5,231").on('click');
+
+			var es = L.circle([40.463667, -3.74922], {
+    		color: '#e60026',
+    		fillColor: '#e60026',
+    		fillOpacity: 0.5,
+    		radius: 250000
+			}).addTo(map)
+			es.bindPopup("<b>Spain</b><br>Cases: 407,879<br>Deaths: 28,838<br>Spain's daily coronavirus infections are on the rise. To battle the situation, schools are opting for a hybrid of in-person and online instruction, as well as shutting down 'hot zones' to reduce infection.").on('click');
+
+			var et = L.circle([9.145, 40.489673], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			et.bindPopup("<b>Ethiopa</b><br>Cases: 37,665<br>Deaths: 637").on('click');
+
+			var fi = L.circle([61.92411, 25.748151], {
+       color: 'blue',
+       fillColor: 'blue',
+       fillOpacity: 0.5,
+       radius: 75000
+      }).addTo(map)
+      fi.bindPopup("<b>Finland</b><br>Cases: 7,906<br>Deaths: 334").on('click');
+
+			var fo = L.circle([61.892635, -6.911806], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			fo.bindPopup("<b>Faroe Islands</b><br>Cases: 384<br>Deaths: 0").on('click');
+
+			var fr = L.circle([46.227638, 2.213749], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 175000
+			}).addTo(map)
+			fr.bindPopup("<b>France</b><br>Cases: 234,400<br>Deaths: 30,503").on('click');
+
+			var gb = L.circle([55.378051, -3.435973], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 150000
+			}).addTo(map)
+			gb.bindPopup("<b>United Kingdom</b><br>Cases: 323,313<br>Deaths: 41,405").on('click');
+
+			var gh = L.circle([7.946527, -1.023194], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			gh.bindPopup("<b>Ghana</b><br>Cases: 43,325<br>Deaths: 261").on('click');
+
+			var gr = L.circle([39.074208, 21.824312], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			gr.bindPopup("<b>Greece</b><br>Cases: 8,138<br>Deaths: 238").on('click');
+
+			var gt = L.circle([15.783471, -90.230759], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			gt.bindPopup("<b>Guatemala</b><br>Cases: 66,941<br>Deaths: 2,532").on('click');
+
+			var gw = L.circle([11.803749, -15.180413], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			gw.bindPopup("<b>Guinea-Bissau</b><br>Cases: 2,149<br>Deaths: 33").on('click');
+
+			var hk = L.circle([22.396428, 114.109497], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			hk.bindPopup("Hong Kong<br>Cases: 4,658<br>Deaths: 76").on('click');
+
+			var hn = L.circle([15.199999, -86.241905], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			hn.bindPopup("<b>Honduras</b><br>Cases: 53,381<br>Deaths: 1,632").on('click');
+
+			var id = L.circle([-0.789275, 113.921327], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 150000
+			}).addTo(map)
+			id.bindPopup("<b>Indonesia</b><br>Cases: 151,498<br>Deaths: 6,594").on('click');
+
+			var ie = L.circle([53.41291, -8.24389], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ie.bindPopup("<b>Ireland</b><br>Cases: 27,755<br>Deaths: 1,776").on('click');
+
+			var il = L.circle([31.046051, 34.851612], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 80000
+			}).addTo(map)
+			il.bindPopup("<b>Israel</b><br>Cases: 100,716<br>Deaths: 809").on('click');
+
+			var ind = L.circle([20.593684, 78.96288], {
+    		color: '#e60026',
+    		fillColor: '#e60026',
+    		fillOpacity: 0.5,
+    		radius: 500000
+			}).addTo(map)
+			ind.bindPopup("<b>India</b><br>Cases: 3,001,379<br>Deaths: 56,194").on('click');
+
+			var iq = L.circle([33.223191, 43.679291], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 200000
+			}).addTo(map)
+			iq.bindPopup("<b>Iraq</b><br>Cases: 201,050<br>Deaths: 6,353").on('click');
+
+			var ir = L.circle([32.427908, 53.688046], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 350000
+			}).addTo(map)
+			ir.bindPopup("<b>Iran</b><br>Cases: 356,792<br>Deaths: 20,502").on('click');
+
+			var it = L.circle([41.87194, 12.56738], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 200000
+			}).addTo(map)
+			it.bindPopup("<b>Italy</b><br>Cases: 257,065<br>Deaths: 35,427").on('click');
+
+			var jp = L.circle([36.204824, 138.252924], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			jp.bindPopup("<b>Japan</b><br>Cases: 32,118 <br>Deaths: 1,168").on('click');
+
+			var ke = L.circle([-0.023559, 37.906193], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ke.bindPopup("<b>Kenya</b><br>Cases: 32,118<br>Deaths: 542").on('click');
+
+			var kg = L.circle([41.20438, 74.766098], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			kg.bindPopup("<b>Kyrgzstan</b><br>Cases: 42,889<br>Deaths: 1,055").on('click');
+
+			var kp = L.circle([40.339852, 127.510093], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			kp.bindPopup("<b>North Korea</b><br>Cases: Unknown<br>Deaths: Unknown").on('click');
+
+			var kr = L.circle([35.907757, 127.766922], {
+    		color: '#027e4e',
+    		fillColor: '#027e4e',
+    		fillOpacity: 0.5,
+    		radius: 175000
+			}).addTo(map)
+			kr.bindPopup("<b>South Korea</b><br>Cases: 17,002<br>Deaths: 309<br>South Korea had an agressive approach to tackling the virus with extremely strict and cautious rules. Early on contrary to the impact other countries were facing, South Korea on had 0.2% of their population affected.").on('click');
+
+			var kw = L.circle([29.31166, 47.481766], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			kw.bindPopup("<b>Kuwait</b><br>Cases: 79,957<br>Deaths: 513").on('click');
+
+			var kz = L.circle([48.019573, 66.923684], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			kz.bindPopup("<b>Kazakhstan</b><br>Cases: 104,313<br>Deaths: 1,415").on('click');
+
+			var lb = L.circle([33.854721, 35.862285], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			lb.bindPopup("<b>Lebanon</b><br>Cases: 11,580<br>Deaths: 116").on('click');
+
+			var ly = L.circle([26.3351, 17.228331], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ly.bindPopup("<b>Libya</b><br>Cases: 10,121<br>Deaths: 180").on('click');
+
+			var ma = L.circle([31.791702, -7.09262], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ma.bindPopup("<b>Morocco</b><br>Cases: 49,247<br>Deaths: 817").on('click');
+
+			var md = L.circle([47.411631, 28.369885], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			md.bindPopup("<b>Moldova</b><br>Cases: 33,072<br>Deaths: 935").on('click');
+
+			var me = L.circle([42.708678, 19.37439], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 50000
+			}).addTo(map)
+			me.bindPopup("<b>Montenegro</b><br>Cases: 4,277<br>Deaths: 82").on('click');
+
+			var mg = L.circle([-18.766947, 46.869107], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			mg.bindPopup("<b>Madagascar</b><br>Cases: 14,218<br>Deaths: 178").on('click');
+			
+			var mk = L.circle([41.608635, 21.745275], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 50000
+			}).addTo(map)
+			mk.bindPopup("<b>Macedonia</b><br>Cases: 13,458<br>Deaths: 563").on('click');
+
+			var mx = L.circle([23.634501, -102.552784], {
+    		color: '#e60026',
+    		fillColor: '#e60026',
+    		fillOpacity: 0.5,
+    		radius: 500000
+			}).addTo(map)
+			mx.bindPopup("<b>Mexico</b><br>Cases: 549,734<br>Deaths: 59,610").on('click');
+
+			var ne = L.circle([17.607789, 8.081666], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ne.bindPopup("<b>Niger</b><br>Cases: 1,172<br>Deaths: 69").on('click');
+
+			var ng = L.circle([9.081999, 8.675277], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ng.bindPopup("<b>Nigeria</b><br>Cases: 51,304<br>Deaths: 996").on('click');
+
+			var nl = L.circle([52.132633, 5.291266], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			nl.bindPopup("<b>Netherlands</b><br>Cases: 66,097<br>Deaths: 6,200").on('click');
+
+			var no = L.circle([60.472024, 8.468946], {
+    		color: '#027e4e',
+    		fillColor: '#027e4e',
+    		fillOpacity: 0.5,
+    		radius: 100000
+			}).addTo(map)
+			no.bindPopup("<b>Norway</b><br>Cases: 10,275<br>Deaths: 264<br>In Norway, health visits and checkups related to the virus are free of cost in order to diagnose the problem quickly and prevent spread.").on('click');
+
+			var np = L.circle([28.394857, 84.124008], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			np.bindPopup("<b>Nepal</b><br>Cases: 31,117<br>Deaths: 146").on('click');
+
+			var nz = L.circle([-46, 167.5], {
+    		color: '#027e4e',
+    		fillColor: '#027e4e',
+    		fillOpacity: 0.5,
+    		radius: 150000
+			}).addTo(map)
+			nz.bindPopup("<b>New Zealand</b><br>Cases: 1,671<br>Deaths: 22<br>New Zealand's Government jumped on this pandemic will full force. With extreme cooperation amongst themselves, they were able to go into complete lockdown within 3 weeks (which would take other countries 2 months).").on('click');
+
+			var om = L.circle([21.512583, 55.923255], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			om.bindPopup("<b>Oman</b><br>Cases: 83,769<br>Deaths: 609").on('click');
+
+			var pa = L.circle([8.537981, -80.782127], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			pa.bindPopup("<b>Panama</b><br>Cases: 84,392<br>Deaths: 1,859").on('click');
+
+			var pe = L.circle([-9.189967, -75.015152], {
+    		color: '#e60026',
+    		fillColor: '#e60026',
+    		fillOpacity: 0.5,
+    		radius: 350000
+			}).addTo(map)
+			pe.bindPopup("<b>Peru</b><br>Cases: 576,067<br>Deaths: 27,245").on('click');
+
+			var ph = L.circle([12.879721, 121.774017], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ph.bindPopup("<b>Philippines</b><br>Cases: 187,249<br>Deaths: 2,966").on('click');
+
+			var pk = L.circle([30.375321, 69.345116], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 150000
+			}).addTo(map)
+			pk.bindPopup("<b>Pakistan</b><br>Cases: 292,174<br>Deaths: 6,231").on('click');
+
+			var pl = L.circle([51.919438, 19.145136], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			pl.bindPopup("<b>Poland</b><br>Cases: 61,181<br>Deaths: 1,951").on('click');
+
+			var pr = L.circle([18.220833, -66.590149], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			pr.bindPopup("<b>Puerto Rico</b><br>Cases: 25,695<br>Deaths: 329").on('click');
+
+			var pt = L.circle([39.399872, -8.224454], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			pt.bindPopup("<b>Portugal</b><br>Cases: 55,452<br>Deaths: 1,794").on('click');
+
+			var py = L.circle([-23.442503, -58.443832], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			py.bindPopup("<b>Paraguay</b><br>Cases: 12,536<br>Deaths: 182").on('click');
+
+			var qa = L.circle([25.354826, 51.183884], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			qa.bindPopup("<b>Qatar</b><br>Cases: 116,765<br>Deaths: 193").on('click');
+
+			var ro = L.circle([45.943161, 24.96676], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ro.bindPopup("<b>Romania</b><br>Cases: 77,544<br>Deaths: 3,233").on('click');
+
+			var rs = L.circle([44.016521, 21.005859], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			rs.bindPopup("<b>Serbia</b><br>Cases: 30,548<br>Deaths: 695").on('click');
+
+			var ru = L.circle([63.125187, 103.75398], {
+    		color: '#e60026',
+    		fillColor: '#e60026',
+    		fillOpacity: 0.5,
+    		radius: 775000
+			}).addTo(map)
+			ru.bindPopup("<b>Russia</b><br>Cases: 951,897<br>Deaths: 16,310").on('click');
+
+			var sa = L.circle([23.885942, 45.079162], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 150000
+			}).addTo(map)
+			sa.bindPopup("<b>Saudi Arabia</b><br>Cases: 306,370<br>Deaths: 3,649").on('click');
+
+			var se = L.circle([61, 15], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			se.bindPopup("<b>Sweden</b><br>Cases: 86,068<br>Deaths: 5,810").on('click');
+			
+			var sg = L.circle([1.352083, 103.819836], {
+    		color: '#646464',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			sg.bindPopup("<b>Singapore</b><br>Cases: 56,266<br>Deaths: 27<br>The government in Singapore acted generously giving out stimulus packages equivalent to 20% of the country's GDP.").on('click');
+
+			var sl = L.circle([8.460555, -11.779889], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			sl.bindPopup("<b>Sierra Leone</b><br>Cases: 1,972<br>Deaths: 69").on('click');
+
+			var sn = L.circle([14.497401, -14.452362], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			sn.bindPopup("<b>Senegal</b><br>Cases: 12,850<br>Deaths: 266").on('click');
+
+			var sv = L.circle([13.794185, -88.89653], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 65000
+			}).addTo(map)
+			sv.bindPopup("<b>El Salvador</b><br>Cases: 24,420<br>Deaths: 654").on('click');
+
+			var sy = L.circle([34.802075, 38.996815], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			sy.bindPopup("<b>Syria</b><br>Cases: 2,073<br>Deaths: 83").on('click');
+
+			var sz = L.circle([-26.522503, 31.465866], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			sz.bindPopup("<b>Swaziland</b><br>Cases: 3,989<br>Deaths:76").on('click');
+
+			var th = L.circle([15.870032, 100.992541], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			th.bindPopup("<b>Thailand</b><br>Cases: 3,390<br>Deaths: 58").on('click');
+
+			var td = L.circle([15.454166, 18.732207], {
+       color: 'blue',
+       fillColor: 'blue',
+       fillOpacity: 0.5,
+       radius: 75000
+      }).addTo(map)
+      td.bindPopup("<b>Chad</b><br>Cases: 981<br>Deaths: 76").on('click');
+
+			var tr = L.circle([38.963745, 35.243322], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			tr.bindPopup("<b>Turkey</b><br>Cases: 255,723<br>Deaths: 6,080").on('click');
+
+			var tw = L.circle([23.69781, 120.960515], {
+    		color: '#027e4e',
+    		fillColor: '#027e4e',
+    		fillOpacity: 0.5,
+    		radius: 100000
+			}).addTo(map)
+			tw.bindPopup("<b>Taiwan</b><br>Cases: 487<br>Deaths: 7<br>Patients in Taiwan have a national health insurance card which can be looked up to find underlying respitory issue.").on('click');
+
+			var ua = L.circle([48.926563, 31.475782], {
+    		color: '#464646',
+    		fillColor: '#ffd300',
+    		fillOpacity: 0.5,
+    		radius: 175000
+			}).addTo(map)
+			ua.bindPopup("<b>Ukraine</b><br>Cases: 102,971<br>Deaths: 2,244").on('click');
+
+			var us = L.circle([39.833332, -98.583336], {
+    		color: '#e60026',
+    		fillColor: '#e60026',
+    		fillOpacity: 0.5,
+    		radius: 775000
+			}).addTo(map)
+			us.bindPopup("<b>United States of America</b><br>Cases: 5,798,983<br>Deaths: 179,240<br>").on('click');
+
+			var uz = L.circle([41.377491, 64.585262], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			uz.bindPopup("<b>Uzbekistan</b><br>Cases: 38,412<br>Deaths: 265").on('click');
+
+			var ve = L.circle([6.42375, -66.58973], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ve.bindPopup("<b>Venezuela</b><br>Cases: 38,219<br>Deaths: 317").on('click');
+
+			var vi = L.circle([18.335765, -64.896335], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			vi.bindPopup("<b>US Virgin Islands</b><br>Cases: 960<br>Deaths: 10").on('click');
+
+			var vn = L.circle([14.058324, 108.277199], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			vn.bindPopup("<b>Vietnam</b><br>Cases: 1,014<br>Deaths: 25").on('click');
+
+			var xk = L.circle([42.602636, 20.902977], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 50000
+			}).addTo(map)
+			xk.bindPopup("<b>Kosovo</b><br>Cases: 12,168<br>Deaths: 448").on('click');
+
+			var ye = L.circle([15.552727, 48.516388], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			ye.bindPopup("<b>Yemen</b><br>Cases: 1,906<br>Deaths: 542").on('click');
+
+			var za = L.circle([-30.559482, 22.937506], {
+    		color: '#e60026',
+    		fillColor: '#e60026',
+    		fillOpacity: 0.5,
+    		radius: 350000
+			}).addTo(map)
+			za.bindPopup("<b>South Africa</b><br>Cases: 603,338<br>Deaths: 12,843").on('click');
+
+			var zm = L.circle([-13.133897, 27.849332], {
+    		color: 'blue',
+    		fillColor: 'blue',
+    		fillOpacity: 0.5,
+    		radius: 75000
+			}).addTo(map)
+			zm.bindPopup("<b>Zambia</b><br>Cases: 10,627<br>Deaths: 277").on('click');
+
+			var legend = L.control({ position: "bottomleft" });
+
+			legend.onAdd = function(map) {
+  		var div = L.DomUtil.create("div", "legend");
+  		div.innerHTML += "<h4>Map Legend</h4>";
+ 	 		div.innerHTML += '<i style="background: #e60026"></i><span>Countries with Most Cases</span><br>';
+  		div.innerHTML += '<i style="background: #ffd300"></i><span>Over 100k Cases</span><br>';
+  		div.innerHTML += '<i style="background: #027e4e"></i><span>Learn More About Their Approach</span><br>';
+			div.innerHTML += '<i style="background: blue"></i><span>Under 100k Cases</span><br>';
+			div.innerHTML += '<i style="background: white"></i><span>Last Updated Aug 22, 10AM EST</span><br>';
+  		return div;
+			};
+
+			legend.addTo(map);
+
+    </script>
+	</body>
+</html>
