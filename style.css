@@ -1,0 +1,285 @@
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+
+
+h3 {
+	color: #ffd300;
+	padding-top: 20px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.btn:link,
+.btn:visited {
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 15px 40px;
+	display: inline-block;
+	border-radius: 100px;
+	transition: all .2s;
+	position: relative;
+}
+
+.btn:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.btn:active {
+	transform: translateY(-1px);
+	box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.btn-white {
+	background-color: #ffd300;
+	color: #000;
+}
+
+.btn::after {
+	content: "";
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	border-radius: 100px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	transition: all .4s;
+}
+
+.btn-white::after {
+	background-color: #ffd300;
+}
+
+.btn:hover::after {
+	transform: scaleX(1.4) scaleY(1.6);
+	opacity: 0;
+}
+
+.btn-animated {
+	animation: moveInBottom 0.5s ease-out 0.75s;
+	animation-fill-mode: backwards;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    color: #ffd000;
+}
+
+.fa-instagram {
+  color: white;
+	height: 30px;
+	width: 30px;
+}
+
+iframe {
+	width: 640px;
+	height: 480px;
+}
+
+.legend {
+  padding: 6px 8px;
+  font-size: 14px;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+  /*border-radius: 5px;*/
+  line-height: 24px;
+  color: #555;
+}
+.legend h4 {
+  text-align: center;
+  font-size: 16px;
+  margin: 2px 12px 8px;
+  color: #777;
+}
+
+.legend span {
+  position: relative;
+  bottom: 3px;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin: 0 8px 0 0;
+  opacity: 0.7;
+}
+
+.legend i.icon {
+  background-size: 18px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+#myCarousel {
+  width: 100%;
+  max-height: 95vh;
+	overflow: hidden;
+}
+
+.footer-copyright {
+	color: white;
+}
+
+.footer-copyright a {
+	color:white;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+	font-size: 17px;
+	font-family: 'Nanum Myeongjo', serif;
+}
+
+.centered {
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centeredv2 {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+li a {
+	text-decoration: none;
+	color: white;
+	padding: 10px;
+}
+
+h2 {
+	color: #ffd300;
+	text-align: center;
+}
+
+.welcome {
+  color: black;
+	margin-top: 20px;
+  text-align: center; 
+}
+
+.container {
+	padding-top: 40px;
+	text-align: center;
+}
+
+p {
+	text-align: center;
+	padding: 30px;
+	font-size: 20px;
+}
+
+.container h1{
+	padding-top: 30px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.container #btn {
+	padding-bottom: 40px;
+	
+}
+
+.container iframe {
+	padding-bottom: 40px;
+}
+
+.container h2{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.containerv3 {
+	margin: 40px;
+  padding-top: 15%;
+  padding-left: 10%;
+  padding-right:10%;
+	text-align: center;
+}
+
+.expl{
+  padding-left: 5%;
+  padding-right:5%;
+  background-color: #f8f8f8;
+}
+
+.bg {
+	background-color: #f8f8f8;
+}
+
+.explanation {
+  color: black;
+  text-align: center;
+}
+
+img {
+	margin-right: 15px;
+}
+
+.text_1 {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter;
+  display: inline-block;
+  position: relative;
+  animation-duration: 10s;
+  animation-timing-function: steps(25, 25);
+  animation-iteration-count: infinite;
+  font-size: 50px;
+  color: white;
+}
+
+.text_1::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  animation: caret infinite;
+  animation-duration: 1s;
+  animation-timing-function: steps(1, end);
+}
+
+@keyframes typewriter {
+  0%, 100% {
+    width: 0;
+  }
+  20%, 80% {
+    width: 12.25em;
+  }
+}
+@keyframes caret {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
